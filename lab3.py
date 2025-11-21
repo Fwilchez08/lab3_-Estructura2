@@ -4,7 +4,7 @@ Laboratorio 3 - Estructura de Datos II
 Universidad del Norte
 
 Este módulo implementa el juego principal con arquitectura peer-to-peer,
-manejo de múltiples hilos y comunicación por sockets.
+manejo de múltiples hilos y comunicación por sockets
 """
 
 import tkinter as tk
@@ -18,12 +18,12 @@ from datetime import datetime
 
 class Paint3:
     """
-    Clase principal del juego Paint 3 con arquitectura P2P.
-    Gestiona la interfaz gráfica, conexiones de red y lógica del juego.
+    Clase principal del juego Paint 3 con arquitectura P2P
+    Gestiona la interfaz gráfica, conexiones de red y lógica del juego
     """
     
     def __init__(self, root):
-        """Inicializa la aplicación y sus componentes."""
+        """Inicializa la app y sus componentes"""
         self.root = root
         self.root.title("Paint 3")
         self.root.geometry("1200x700")
@@ -50,7 +50,7 @@ class Paint3:
         self.word_bank = [
             "casa", "perro", "árbol", "carro", "sol", "luna", "estrella",
             "computadora", "teléfono", "libro", "lápiz", "montaña", "río",
-            "avión", "barco", "pizza", "helado", "guitarra", "piano", "reloj"
+            "avión", "barco", "pizza", "helado", "guitarra", "reloj"
         ]
         
         # Puntuaciones de jugadores
@@ -70,7 +70,7 @@ class Paint3:
         self.setup_ui()
         
     def setup_ui(self):
-        """Interfaz gráfica de usuario."""
+        """Construye la interfaz grafica de usuario"""
         # Frame principal dividido en tres secciones
         self.main_frame = tk.Frame(self.root, bg="#2C3E50")
         self.main_frame.pack(fill=tk.BOTH, expand=True)
@@ -116,7 +116,7 @@ class Paint3:
         self.tools_frame.pack(fill=tk.X)
         self.tools_frame.pack_propagate(False)
         
-        tk.Button(self.tools_frame, text="🎨 Color", command=self.choose_color,
+        tk.Button(self.tools_frame, text="Color", command=self.choose_color,
                  bg="#E74C3C", fg="white", font=("Arial", 10, "bold")).pack(side=tk.LEFT, padx=5)
         
         tk.Label(self.tools_frame, text="Grosor:", bg="#ECF0F1").pack(side=tk.LEFT, padx=5)
@@ -125,7 +125,7 @@ class Paint3:
         self.size_scale.set(3)
         self.size_scale.pack(side=tk.LEFT, padx=5)
         
-        tk.Button(self.tools_frame, text="🗑️ Limpiar", command=self.clear_canvas,
+        tk.Button(self.tools_frame, text="Limpiar", command=self.clear_canvas,
                  bg="#95A5A6", fg="white", font=("Arial", 10, "bold")).pack(side=tk.LEFT, padx=5)
         
         # Eventos del canvas
@@ -147,7 +147,7 @@ class Paint3:
         self.name_entry.insert(0, "Jugador")
         self.name_entry.pack(fill=tk.X, padx=5, pady=2)
         
-        tk.Button(connection_frame, text="🖥️ Crear Sala (Host)", 
+        tk.Button(connection_frame, text="Crear Sala (Host)", 
                  command=self.start_host, bg="#27AE60", fg="white").pack(fill=tk.X, padx=5, pady=2)
         
         tk.Label(connection_frame, text="IP del Host:", bg="#34495E", fg="white").pack(anchor=tk.W, padx=5)
@@ -160,11 +160,11 @@ class Paint3:
         self.port_entry.insert(0, "5555")
         self.port_entry.pack(fill=tk.X, padx=5, pady=2)
         
-        tk.Button(connection_frame, text="🔗 Conectar como Cliente", 
+        tk.Button(connection_frame, text="Conectar como Cliente", 
                  command=self.connect_to_host, bg="#3498DB", fg="white").pack(fill=tk.X, padx=5, pady=2)
         
         # Botón para iniciar juego (solo host)
-        self.start_game_btn = tk.Button(connection_frame, text="▶️ Iniciar Juego", 
+        self.start_game_btn = tk.Button(connection_frame, text="Iniciar Juego", 
                                        command=self.start_game, bg="#E67E22", 
                                        fg="white", state=tk.DISABLED)
         self.start_game_btn.pack(fill=tk.X, padx=5, pady=5)
@@ -183,7 +183,7 @@ class Paint3:
         self.chat_entry.bind("<Return>", self.send_message)
         
     def start_host(self):
-        """Inicia el servidor como host de la sala."""
+        """Inicia el servidor como host de la sala"""
         self.my_name = self.name_entry.get().strip()
         if not self.my_name:
             messagebox.showerror("Error", "Debes ingresar un nombre")
@@ -211,9 +211,9 @@ class Paint3:
             # Obtener IP local
             local_ip = socket.gethostbyname(socket.gethostname())
             
-            self.add_chat_message("SISTEMA", f"✅ Sala creada exitosamente")
-            self.add_chat_message("SISTEMA", f"📍 IP Local: {local_ip}")
-            self.add_chat_message("SISTEMA", f"🔌 Puerto: {port}")
+            self.add_chat_message("SISTEMA", f"Sala creada exitosamente")
+            self.add_chat_message("SISTEMA", f"IP Local: {local_ip}")
+            self.add_chat_message("SISTEMA", f"Puerto: {port}")
             self.add_chat_message("SISTEMA", "-" * 30)
             self.add_chat_message("SISTEMA", "Comparte estos datos con otros jugadores:")
             self.add_chat_message("SISTEMA", f"IP: {local_ip}  |  Puerto: {port}")
@@ -227,7 +227,7 @@ class Paint3:
             messagebox.showerror("Error", f"No se pudo crear la sala: {e}")
     
     def show_connection_info(self, ip, port):
-        """Muestra una ventana con la información de conexión del host."""
+        """Muestra una ventana con la información de conexión del host"""
         info_window = tk.Toplevel(self.root)
         info_window.title("Información de Conexión")
         info_window.geometry("400x250")
@@ -238,7 +238,7 @@ class Paint3:
         info_window.transient(self.root)
         info_window.grab_set()
         
-        tk.Label(info_window, text="🎮 Sala Creada", 
+        tk.Label(info_window, text="Sala Creada :D", 
                 bg="#2C3E50", fg="white", 
                 font=("Arial", 16, "bold")).pack(pady=15)
         
@@ -268,7 +268,7 @@ class Paint3:
                              font=("Courier", 14, "bold"))
         port_label.pack(pady=2)
         
-        # Botón para copiar (simulado con selección de texto)
+        # Botón para copiar
         btn_frame = tk.Frame(info_window, bg="#2C3E50")
         btn_frame.pack(pady=10)
         
@@ -278,16 +278,16 @@ class Paint3:
             self.root.clipboard_append(info_text)
             messagebox.showinfo("Copiado", "Información copiada al portapapeles")
         
-        tk.Button(btn_frame, text="📋 Copiar Info", command=copy_info,
+        tk.Button(btn_frame, text="Copiar Info", command=copy_info,
                  bg="#27AE60", fg="white", font=("Arial", 10, "bold"),
                  padx=20, pady=5).pack(side=tk.LEFT, padx=5)
         
-        tk.Button(btn_frame, text="✓ Entendido", command=info_window.destroy,
+        tk.Button(btn_frame, text="Entendido", command=info_window.destroy,
                  bg="#3498DB", fg="white", font=("Arial", 10, "bold"),
                  padx=20, pady=5).pack(side=tk.LEFT, padx=5)
     
     def accept_connections(self):
-        """Hilo que acepta conexiones entrantes de nuevos peers."""
+        """Hilo que acepta conexiones entrantes de nuevos peers"""
         while self.running:
             try:
                 client_socket, address = self.server_socket.accept()
@@ -305,7 +305,7 @@ class Paint3:
                 break
     
     def connect_to_host(self):
-        """Conecta al host como cliente."""
+        """Conecta al host como cliente"""
         self.my_name = self.name_entry.get().strip()
         if not self.my_name:
             messagebox.showerror("Error", "Debes ingresar un nombre")
@@ -331,7 +331,7 @@ class Paint3:
             messagebox.showerror("Error", f"No se pudo conectar: {e}")
     
     def handle_peer(self, peer_socket):
-        """Maneja la comunicación con un peer conectado."""
+        """Maneja la comunicación con un peer conectado"""
         buffer = ""
         try:
             while self.running:
@@ -357,7 +357,7 @@ class Paint3:
             peer_socket.close()
     
     def receive_data(self):
-        """Hilo que recibe datos del host (para clientes)."""
+        """Hilo que recibe datos del host (para clientes)"""
         buffer = ""
         try:
             while self.running:
@@ -373,7 +373,6 @@ class Paint3:
                         try:
                             message = json.loads(line)
                             msg_type = message.get('type')
-                            # Solo mostrar debug para mensajes importantes, no para "draw"
                             if msg_type != 'draw':
                                 print(f"DEBUG receive_data: Cliente recibió {msg_type}")
                             self.process_message(message, None)
@@ -386,7 +385,7 @@ class Paint3:
             print(f"DEBUG receive_data error: {e}")
     
     def process_message(self, message, sender_socket):
-        """Procesa mensajes recibidos de otros peers."""
+        """Procesa mensajes recibidos de otros peers"""
         msg_type = message.get("type")
         
         if msg_type == "join":
@@ -396,10 +395,9 @@ class Paint3:
             self.update_players_list()
             self.add_chat_message("SISTEMA", f"{name} se ha unido al juego")
             
-            # Si soy host, envío la lista actualizada a todos
+            # Host envia la lista actualizada a todos
             if self.is_host:
                 self.broadcast_data({"type": "player_list", "players": self.scores})
-                # Enviar la lista al nuevo jugador también
                 self.send_data_to_peer(sender_socket, 
                     {"type": "player_list", "players": self.scores})
         
@@ -422,7 +420,6 @@ class Paint3:
                 self.word_label.config(text=f"Dibuja: {self.current_word}")
                 print(f"DEBUG: Soy el dibujante, palabra: {self.current_word}")
             else:
-                # NO soy el dibujante, pero NECESITO conocer la palabra para verificar respuestas
                 self.current_word = word
                 hint = "_" * len(word)
                 self.word_label.config(text=f"Adivina: {hint}")
@@ -505,7 +502,7 @@ class Paint3:
             self.word_label.config(text=f"La palabra era: {word}")
     
     def send_data(self, data):
-        """Envía datos al servidor (si soy cliente)."""
+        """Envía datos al servidor (si soy cliente)"""
         if self.peer_socket:
             try:
                 message = json.dumps(data) + '\n'
@@ -514,7 +511,7 @@ class Paint3:
                 pass
     
     def send_data_to_peer(self, peer_socket, data):
-        """Envía datos a un peer específico."""
+        """Envía datos a un peer específico"""
         if peer_socket:
             try:
                 message = json.dumps(data) + '\n'
@@ -523,7 +520,7 @@ class Paint3:
                 pass
     
     def broadcast_data(self, data):
-        """Transmite datos a todos los peers conectados (host)."""
+        """Transmite datos a todos los peers conectados (host)"""
         if self.is_host:
             message = json.dumps(data) + '\n'
             for peer in self.connected_peers[:]:  # Copia para evitar modificación durante iteración
@@ -533,7 +530,7 @@ class Paint3:
                     self.connected_peers.remove(peer)
     
     def start_game(self):
-        """Inicia una nueva ronda del juego (solo host)."""
+        """Inicia una nueva ronda del juego (solo host)"""
         if not self.is_host:
             return
         
@@ -570,7 +567,7 @@ class Paint3:
         self.process_message(game_data, None)
     
     def game_timer(self):
-        """Hilo del temporizador del juego."""
+        """Hilo del temporizador del juego"""
         while self.game_active and self.time_left > 0:
             self.timer_label.config(text=f"⏱️ {self.time_left}s")
             time.sleep(1)
@@ -590,7 +587,7 @@ class Paint3:
                 self.word_label.config(text=f"La palabra era: {self.current_word}")
     
     def paint(self, event):
-        """Maneja el evento de dibujo en el canvas."""
+        """Maneja el evento de dibujo en el canvas"""
         if not self.am_i_drawing or not self.game_active:
             return
         
@@ -620,23 +617,23 @@ class Paint3:
         self.old_y = event.y
     
     def reset(self, event):
-        """Resetea las coordenadas de dibujo."""
+        """Resetea las coordenadas de dibujo"""
         self.old_x = None
         self.old_y = None
     
     def choose_color(self):
-        """Abre selector de color."""
+        """Abre selector de color"""
         if self.am_i_drawing and self.game_active:
             color = colorchooser.askcolor(title="Elige un color")[1]
             if color:
                 self.color = color
     
     def change_size(self, value):
-        """Cambia el grosor del pincel."""
+        """Cambia el grosor del pincel"""
         self.brush_size = int(value)
     
     def clear_canvas(self):
-        """Limpia el canvas de dibujo."""
+        """Limpia el canvas de dibujo"""
         if self.am_i_drawing and self.game_active:
             self.canvas.delete("all")
             
@@ -647,7 +644,7 @@ class Paint3:
                 self.send_data(clear_data)
     
     def send_message(self, event=None):
-        """Envía un mensaje de chat."""
+        """Envía un mensaje de chat"""
         message = self.chat_entry.get().strip()
         if not message:
             return
@@ -664,7 +661,7 @@ class Paint3:
                 self.update_players_list()
                 
                 # Mostrar localmente
-                self.add_chat_message("SISTEMA", "¡Adivinaste correctamente! 🎉")
+                self.add_chat_message("SISTEMA", "¡Adivinaste correctamente!")
                 
                 # Notificar a otros
                 correct_data = {
@@ -701,12 +698,12 @@ class Paint3:
         self.add_chat_message(self.my_name, message)
     
     def add_chat_message(self, name, text):
-        """Agrega un mensaje al chat."""
+        """Agrega un mensaje al chat"""
         self.chat_display.config(state=tk.NORMAL)
         timestamp = datetime.now().strftime("%H:%M")
         
         if name == "SISTEMA":
-            self.chat_display.insert(tk.END, f"[{timestamp}] 🔔 {text}\n", "system")
+            self.chat_display.insert(tk.END, f"[{timestamp}] {text}\n", "system")
             self.chat_display.tag_config("system", foreground="#E67E22")
         else:
             self.chat_display.insert(tk.END, f"[{timestamp}] {name}: {text}\n")
@@ -715,7 +712,7 @@ class Paint3:
         self.chat_display.config(state=tk.DISABLED)
     
     def update_players_list(self):
-        """Actualiza la lista de jugadores y puntuaciones."""
+        """Actualiza la lista de jugadores y puntuaciones"""
         self.players_listbox.delete(0, tk.END)
         
         # Ordenar por puntuación
@@ -726,7 +723,7 @@ class Paint3:
             self.players_listbox.insert(tk.END, f"{indicator} {name}: {score} pts")
     
     def cleanup(self):
-        """Limpia recursos al cerrar la aplicación."""
+        """Limpia recursos al cerrar la aplicación"""
         self.running = False
         
         if self.server_socket:
@@ -748,7 +745,7 @@ class Paint3:
                 pass
 
 def main():
-    """Función principal para iniciar la aplicación."""
+    """Función principal para iniciar la aplicación"""
     root = tk.Tk()
     app = Paint3(root)
     
@@ -762,5 +759,4 @@ def main():
     root.mainloop()
 
 if __name__ == "__main__":
-
     main()
