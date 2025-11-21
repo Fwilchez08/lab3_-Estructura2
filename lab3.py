@@ -50,7 +50,10 @@ class Paint3:
         self.word_bank = [
             "casa", "perro", "árbol", "carro", "sol", "luna", "estrella",
             "computadora", "teléfono", "libro", "lápiz", "montaña", "río",
-            "avión", "barco", "pizza", "helado", "guitarra", "reloj"
+            "avión", "barco", "pizza", "helado", "guitarra", "reloj", "nieto",
+            "niño", "bebe", "tiburon con patas", "culebra", "POO", "onomatopeya",
+            "columpio", "robot", "pongase serio", "robot", "ted", "adam sandler", "goku",
+            "transformer", "tablero", "isla", "tun tun tun sahur"
         ]
         
         # Puntuaciones de jugadores
@@ -759,4 +762,5 @@ def main():
     root.mainloop()
 
 if __name__ == "__main__":
+
     main()
