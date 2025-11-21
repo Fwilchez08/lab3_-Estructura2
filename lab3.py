@@ -70,7 +70,7 @@ class Paint3:
         self.setup_ui()
         
     def setup_ui(self):
-        """Construye la interfaz gráfica de usuario."""
+        """Interfaz gráfica de usuario."""
         # Frame principal dividido en tres secciones
         self.main_frame = tk.Frame(self.root, bg="#2C3E50")
         self.main_frame.pack(fill=tk.BOTH, expand=True)
@@ -762,4 +762,5 @@ def main():
     root.mainloop()
 
 if __name__ == "__main__":
+
     main()
